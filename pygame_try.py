@@ -25,9 +25,32 @@ class GuidyGonzales:
         
     def move_square(self):
         pass
+    
+    def handle_keys(self):
+        """Handle when key pressed"""
+        #https://www.pygame.org/docs/ref/key.html
+        key = self.pygame.key.get_pressed()
+        
+        # Close the program if escape is pressed.
+        if key[pygame.K_ESCAPE]:
+            return False
         
         
+        
+        return True
+            
+    
     def main(self):
+        run = True
+        while run:
+            self.pygame.event.get()
+            run = self.handle_keys()
+            
+        self.pygame.display.quit()
+        self.pygame.QUIT
+                
+    
+    def main_back(self):
         """"""
         while self.player.x < self.screen.get_width():
             self.pygame.event.pump()
@@ -42,11 +65,13 @@ class GuidyGonzales:
             self.pygame.draw.rect(self.screen, self.red, self.player, 0)
             self.pygame.display.update()
         
+        self.pygame.display.quit()
         self.pygame.QUIT
         
 
 if __name__ == "__main__":
     game = GuidyGonzales()
+    #game.main_back()
     game.main()
 
 
